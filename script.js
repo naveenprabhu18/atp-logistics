@@ -14,8 +14,21 @@ function sendEmail(){
         Subject : "New Enquiry",
         Body : bodyMessage
     }).then(
-      message => alert("Your Enquiry has sent")
+        _message => {
+            // Once email is sent, navigate to home page and show alert
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1000); 
+            alert("Your Enquiry has been sent");
+        }
+    ).catch(
+        error => {
+            console.error('Error sending email:', error);
+            // In case of error, display error message and stay on the current page
+            alert("Oops! Something went wrong. Your enquiry could not be sent.");
+        }
     );
+
 
 }
 form.addEventListener("submit",(e)=> {
